@@ -1,0 +1,24 @@
+[project]
+name = "optimal_crop"
+authors = [
+    {name = "Christopher Hassoe", email = "christopher@hassoe.dk"},
+]
+description = "A package for optimizing image cropping."
+readme = {file = "README.md", content-type = "text/markdown"}
+license = "MIT"
+license-files = ["LICENSE"]
+dynamic = ["version", "dependencies"]
+requires-python = ">= 3.10"
+
+[tool.setuptools]
+packages = ["optimal_crop"]
+package-dir = { optimal_crop = "optimal_crop" }
+
+[tool.setuptools.dynamic]
+version = {attr = "optimal_crop.__version__"}
+dependencies = {file = ["requirements.txt"]}
+
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
