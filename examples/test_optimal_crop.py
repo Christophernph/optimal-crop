@@ -17,6 +17,7 @@ def main():
     
     image = cv2.imread("assets/image.jpg")
     height, width = image.shape[:2]
+    keep_aspect_ratio = True
     distortion = 0.2
     
     # Construct a sample transformation
@@ -33,7 +34,7 @@ def main():
         transform=transform,
         height=height,
         width=width,
-        keep_aspect_ratio=True,
+        keep_aspect_ratio=keep_aspect_ratio,
         disp=True
     )
     
@@ -68,7 +69,7 @@ def main():
         min_y = max(dst_corners[0, 1], dst_corners[1, 1])
         max_x = min(dst_corners[1, 0], dst_corners[2, 0])
         max_y = min(dst_corners[2, 1], dst_corners[3, 1])
-        min_x, min_y, max_x, max_y = adjust_for_aspect_ratio([min_x, min_y, max_x, max_y], height, width)
+        min_x, min_y, max_x, max_y = adjust_for_aspect_ratio([min_x, min_y, max_x, max_y], height, width) if keep_aspect_ratio else [min_x, min_y, max_x, max_y]
         ax.add_patch(plt.Rectangle((min_x, min_y), max_x - min_x, max_y - min_y, fill=False, ec="b", label="Naive Crop"))
         
         # Add optimal crop
