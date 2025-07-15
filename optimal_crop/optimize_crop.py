@@ -70,7 +70,6 @@ def optimize_crop(
     dst_corners = src_corners @ transform.T
     dst_corners = dst_corners[:, :2]  / dst_corners[:, 2:3]
     
-    scale = 1.0 # Will be computed later
     def objective(x):
         """Maximize the area of the crop, i.e. minimize the negative area."""
         return -(x[2] - x[0]) * (x[3] - x[1]) / scale # keep the values in a reasonable range
@@ -181,7 +180,6 @@ def optimize_mutual_crop(
     dst_corners = np.matmul(src_corners, transforms.transpose(0, 2, 1))
     dst_corners = dst_corners[:, :, :2] / dst_corners[:, :, 2:3]
     
-    scale = 1.0  # Will be computed later
     def objective(x):
         """Maximize the area of the crop, i.e. minimize the negative area."""
         return -(x[2] - x[0]) * (x[3] - x[1]) / scale # keep the values in a reasonable range
