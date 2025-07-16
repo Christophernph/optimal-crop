@@ -16,6 +16,8 @@ except ImportError:
 def main():
     np.set_printoptions(precision=3, suppress=True)
     
+    # Parameters
+    # You can change these parameters to test with different images and transformations
     height = 1024
     width = 1536
     distortion = 0.2

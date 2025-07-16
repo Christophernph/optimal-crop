@@ -16,6 +16,8 @@ except ImportError:
 def main():
     np.set_printoptions(precision=3, suppress=True)
     
+    # Parameters
+    # You can change these parameters to test with different images and transformations
     image = cv2.imread("assets/image.jpg")
     height, width = image.shape[:2]
     keep_aspect_ratio = True
