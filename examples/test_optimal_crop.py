@@ -38,6 +38,7 @@ def main():
         height=height,
         width=width,
         keep_aspect_ratio=keep_aspect_ratio,
+        global_search=True,
         disp=True
     )
     if optimal_crop is None:

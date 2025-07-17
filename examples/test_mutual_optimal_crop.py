@@ -45,6 +45,7 @@ def main():
         height=height,
         width=width,
         keep_aspect_ratio=keep_aspect_ratio,
+        global_search=True,
         disp=True
     )
     if optimal_crop is None:
@@ -88,7 +89,7 @@ def main():
     ax.add_patch(plt.Rectangle((optimal_crop[0], optimal_crop[1]), optimal_crop[2] - optimal_crop[0], optimal_crop[3] - optimal_crop[1], fill=False, ec="r", label="Optimal Crop"))
 
     plt.legend()
-    plt.savefig("crop.png")
+    plt.savefig("plot.png")
     
     print("Naive / Optimal Ratio:", (max_x - min_x) * (max_y - min_y) / area)
 
