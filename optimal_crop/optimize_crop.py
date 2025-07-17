@@ -84,12 +84,10 @@ def optimize_crop(
     
     # Starting guess
     if x0 is None:
-        min_x = max(dst_corners[0, 0], dst_corners[3, 0])
-        min_y = max(dst_corners[0, 1], dst_corners[1, 1])
-        max_x = min(dst_corners[1, 0], dst_corners[2, 0])
-        max_y = min(dst_corners[2, 1], dst_corners[3, 1])
-        if keep_aspect_ratio:
-            min_x, min_y, max_x, max_y = adjust_for_aspect_ratio([min_x, min_y, max_x, max_y], height, width)
+        min_x = min(dst_corners[0, 0], dst_corners[3, 0])
+        min_y = min(dst_corners[0, 1], dst_corners[1, 1])
+        max_x = max(dst_corners[1, 0], dst_corners[2, 0])
+        max_y = max(dst_corners[2, 1], dst_corners[3, 1])
         x0 = np.array([min_x, min_y, max_x, max_y])
     scale = (x0[2] - x0[0]) * (x0[3] - x0[1])  # Initial scale based on the initial guess
     
